@@ -1,7 +1,7 @@
 using System.Runtime.CompilerServices;
 using AutoMapper;
 using Exile_Pinboard.Application.Common.Interfaces;
-using Exile_Pinboard.Application.TodoLists.Queries.GetTodos;
+using Exile_Pinboard.Application.WidgetDefinitions.Queries.GetWidgetDefinitions;
 using Exile_Pinboard.Domain.Entities;
 using Microsoft.Extensions.Logging;
 using NUnit.Framework;
@@ -34,8 +34,7 @@ public class MappingTests
     }
 
     [Test]
-    [TestCase(typeof(TodoList), typeof(TodoListDto))]
-    [TestCase(typeof(TodoItem), typeof(TodoItemDto))]
+    [TestCase(typeof(WidgetDefinition), typeof(WidgetDefinitionDto))]
     public void ShouldSupportMappingFromSourceToDestination(Type source, Type destination)
     {
         var instance = GetInstanceOf(source);

@@ -1,6 +1,4 @@
-﻿using Exile_Pinboard.Domain.Constants;
-using Exile_Pinboard.Domain.Entities;
-using Exile_Pinboard.Domain.ValueObjects;
+using Exile_Pinboard.Domain.Constants;
 using Exile_Pinboard.Infrastructure.Identity;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Identity;
@@ -17,7 +15,7 @@ public static class InitialiserExtensions
 
         var initialiser = scope.ServiceProvider.GetRequiredService<ApplicationDbContextInitialiser>();
 
-        await initialiser.InitialiseAsync();
+        //await initialiser.InitialiseAsync(); //Normalement je passe par migration
         await initialiser.SeedAsync();
     }
 }
@@ -41,8 +39,9 @@ public class ApplicationDbContextInitialiser
     {
         try
         {
-            // See https://jasontaylor.dev/ef-core-database-initialisation-strategies
-            await _context.Database.EnsureDeletedAsync();
+            // Bootstrap a new development database without deleting existing data.
+            // EnsureCreated does not upgrade an existing schema; use migrations
+            // when introducing schema changes.
             await _context.Database.EnsureCreatedAsync();
         }
         catch (Exception ex)
@@ -86,25 +85,6 @@ public class ApplicationDbContextInitialiser
                 await _userManager.AddToRolesAsync(administrator, new [] { administratorRole.Name });
             }
         }
-
-        // Default data
-        // Seed, if necessary
-        if (!_context.TodoLists.Any())
-        {
-            _context.TodoLists.Add(new TodoList
-            {
-                Title = "Tasks",
-                Colour = Colour.Green,
-                Items =
-                {
-                    new TodoItem { Title = "Make a todo list 📃" },
-                    new TodoItem { Title = "Check off the first item ✅" },
-                    new TodoItem { Title = "Realise you've already done two things on the list! 🤯"},
-                    new TodoItem { Title = "Reward yourself with a nice, long nap 🏆" },
-                }
-            });
-
-            await _context.SaveChangesAsync();
-        }
+       
     }
 }

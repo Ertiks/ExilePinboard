@@ -3,6 +3,7 @@
   <PropertyGroup>
     <RootNamespace>Exile_Pinboard.Web</RootNamespace>
     <AssemblyName>Exile_Pinboard.Web</AssemblyName>
+    <UserSecretsId>025549c5-1fc5-4fcc-bb52-6c976278284a</UserSecretsId>
   </PropertyGroup>
 
   <ItemGroup>

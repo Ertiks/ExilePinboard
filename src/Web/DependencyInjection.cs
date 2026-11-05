@@ -12,6 +12,9 @@ public static class DependencyInjection
     {
         builder.Services.AddDatabaseDeveloperPageExceptionFilter();
 
+        builder.Services.AddHealthChecks()
+            .AddDbContextCheck<ApplicationDbContext>("mysql");
+
         builder.Services.AddScoped<IUser, CurrentUser>();
 
         builder.Services.AddHttpContextAccessor();

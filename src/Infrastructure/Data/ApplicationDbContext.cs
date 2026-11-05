@@ -1,4 +1,4 @@
-﻿using System.Reflection;
+using System.Reflection;
 using Exile_Pinboard.Application.Common.Interfaces;
 using Exile_Pinboard.Domain.Entities;
 using Exile_Pinboard.Infrastructure.Identity;
@@ -11,13 +11,13 @@ public class ApplicationDbContext : IdentityDbContext<ApplicationUser>, IApplica
 {
     public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) : base(options) { }
 
-    public DbSet<TodoList> TodoLists => Set<TodoList>();
-
-    public DbSet<TodoItem> TodoItems => Set<TodoItem>();
+    public DbSet<WidgetDefinition> WidgetDefinitions => Set<WidgetDefinition>();
 
     protected override void OnModelCreating(ModelBuilder builder)
     {
         base.OnModelCreating(builder);
         builder.ApplyConfigurationsFromAssembly(Assembly.GetExecutingAssembly());
+
+        // Pour éviter les tables inutiles du template
     }
 }

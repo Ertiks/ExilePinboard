@@ -20,6 +20,8 @@ public static class DependencyInjection
             cfg.AddOpenBehavior(typeof(AuthorizationBehaviour<,>));
             cfg.AddOpenBehavior(typeof(ValidationBehaviour<,>));
             cfg.AddOpenBehavior(typeof(PerformanceBehaviour<,>));
+
+            cfg.LicenseKey = builder.Configuration["MediatR:LicenseKey"];
         });
     }
 }
