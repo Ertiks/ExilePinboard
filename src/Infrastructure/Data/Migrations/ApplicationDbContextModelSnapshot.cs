@@ -19,6 +19,44 @@ namespace Exile_Pinboard.Infrastructure.Data.Migrations
                 .HasAnnotation("ProductVersion", "10.0.14")
                 .HasAnnotation("Relational:MaxIdentifierLength", 64);
 
+            modelBuilder.Entity("Exile_Pinboard.Domain.Entities.PinboardWidget", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    b.Property<double>("Height")
+                        .HasColumnType("double");
+
+                    b.Property<string>("Name")
+                        .HasMaxLength(50)
+                        .HasColumnType("varchar(50)");
+
+                    b.Property<int>("PinboardId")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("WidgetDefinitionId")
+                        .HasColumnType("int");
+
+                    b.Property<double>("Width")
+                        .HasColumnType("double");
+
+                    b.Property<double>("X")
+                        .HasColumnType("double");
+
+                    b.Property<double>("Y")
+                        .HasColumnType("double");
+
+                    b.Property<int>("ZIndex")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("WidgetDefinitionId");
+
+                    b.ToTable("PinboardWidgets");
+                });
+
             modelBuilder.Entity("Exile_Pinboard.Domain.Entities.WidgetDefinition", b =>
                 {
                     b.Property<int>("Id")
@@ -240,6 +278,14 @@ namespace Exile_Pinboard.Infrastructure.Data.Migrations
                     b.HasKey("UserId", "LoginProvider", "Name");
 
                     b.ToTable("AspNetUserTokens", (string)null);
+                });
+
+            modelBuilder.Entity("Exile_Pinboard.Domain.Entities.PinboardWidget", b =>
+                {
+                    b.HasOne("Exile_Pinboard.Domain.Entities.WidgetDefinition", null)
+                        .WithMany()
+                        .HasForeignKey("WidgetDefinitionId")
+                        .OnDelete(DeleteBehavior.SetNull);
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>

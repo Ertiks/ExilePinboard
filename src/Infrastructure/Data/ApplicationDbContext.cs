@@ -12,6 +12,7 @@ public class ApplicationDbContext : IdentityDbContext<ApplicationUser>, IApplica
     public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) : base(options) { }
 
     public DbSet<WidgetDefinition> WidgetDefinitions => Set<WidgetDefinition>();
+    public DbSet<PinboardWidget> PinboardWidgets => Set<PinboardWidget>();
 
     protected override void OnModelCreating(ModelBuilder builder)
     {

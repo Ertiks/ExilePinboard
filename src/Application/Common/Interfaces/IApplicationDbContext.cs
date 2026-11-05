@@ -6,6 +6,7 @@ public interface IApplicationDbContext
 {
 
     DbSet<WidgetDefinition> WidgetDefinitions { get; }
+    DbSet<PinboardWidget> PinboardWidgets { get; }
 
     Task<int> SaveChangesAsync(CancellationToken cancellationToken);
 }
