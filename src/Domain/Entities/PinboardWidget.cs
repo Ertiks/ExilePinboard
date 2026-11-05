@@ -1,21 +1,17 @@
-﻿using System.Drawing;
+﻿namespace Exile_Pinboard.Domain.Entities;
 
-namespace Exile_Pinboard.Domain.Entities;
-
-internal class PinboardWidget : BaseEntity
+public class PinboardWidget : BaseEntity
 {
-    public required int WidgetDefinitionId { get; set; }
+    //BASIC DATA :
+    public required int? WidgetDefinitionId { get; set; }
+    public required int PinboardId { get; set; }
     public string? Name { get; set; }
-    
-    
 
 
     //POSITIONS / SCALE :
-    public int posX { get; set; }
-    public int posY { get; set; }
-    public int sizeX { get; set; }
-    public int sizeY { get; set; }
-
-
-
+    public double X { get; set; } = 0;
+    public double Y { get; set; } = 0;
+    public double Width { get; set; } = 100;
+    public double Height { get; set; } = 100;
+    public int ZIndex { get; set; } = 0;
 }
