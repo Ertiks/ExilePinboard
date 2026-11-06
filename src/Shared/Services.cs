@@ -21,8 +21,12 @@ public static class Services
     public const string DatabaseServer = "dbserver";
 
     /// <summary>
-    /// The name of the Database.
-    /// This is the name of the database that will be created and used by the application.
+    /// The name of the application's database connection string.
     /// </summary>
     public const string Database = "Exile_PinboardDb";
+
+    /// <summary>
+    /// The Aspire resource name of the temporary database used by functional tests.
+    /// </summary>
+    public const string TestDatabase = "exile-pinboard-test-db";
 }

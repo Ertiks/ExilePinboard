@@ -9,7 +9,7 @@ public class Program
         var builder = DistributedApplication.CreateBuilder(args);
 
         builder
-            .AddSqlite(Services.Database);
+            .AddSqlite(Services.TestDatabase);
 
         builder.Build().Run();
     }

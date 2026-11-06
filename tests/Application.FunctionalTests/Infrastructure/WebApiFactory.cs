@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Mvc.Testing;
 using Microsoft.AspNetCore.TestHost;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.DependencyInjection.Extensions;
+using ServiceNames = Exile_Pinboard.Shared.Services;
 
 namespace Exile_Pinboard.Application.FunctionalTests.Infrastructure;
 
@@ -12,7 +13,7 @@ public class WebApiFactory(string connectionString) : WebApplicationFactory<Prog
     protected override void ConfigureWebHost(IWebHostBuilder builder)
     {
         builder
-            .UseSetting("ConnectionStrings:Exile_PinboardDb", connectionString);
+            .UseSetting($"ConnectionStrings:{ServiceNames.Database}", connectionString);
 
         builder.ConfigureTestServices(services =>
         {
