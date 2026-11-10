@@ -23,4 +23,5 @@
     <Project Path="tests/Domain.UnitTests/Domain.UnitTests.csproj" />
     <Project Path="tests/Infrastructure.IntegrationTests/Infrastructure.IntegrationTests.csproj" />
   </Folder>
+  <Project Path="src/Desktop/Desktop.csproj" Id="e8260454-072b-4e3d-98ae-8bf8b1c08e0d" />
 </Solution>
